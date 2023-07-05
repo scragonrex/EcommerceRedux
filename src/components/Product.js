@@ -1,4 +1,4 @@
-import React, { useEffect, useState } from 'react'
+import React, { useEffect } from 'react'
 import { add } from './store/cartSlice';
 import { useDispatch, useSelector } from 'react-redux';
 import { fetchProducts } from './store/productSlice';
@@ -6,7 +6,6 @@ import { STATUSES } from './store/productSlice';
 const Product = () => {
   const dispatch = useDispatch();
   const {data:products, status} = useSelector((state)=>state.product)
-  // const [products, setProducts] = useState([]);
 
   const handleAdd = (product) => {
     dispatch(add(product));
@@ -14,13 +13,7 @@ const Product = () => {
   }
   useEffect(() => {
     dispatch(fetchProducts());
-    // const fetchProducts = async()=>{
-    //   const res = await fetch('https://fakestoreapi.com/products');
-    //   const data = await res.json();
-    //   console.log(data);
-    //   setProducts(data);
-    // }
-    // fetchProducts();
+   // eslint-disable-next-line
   }, [])
 
   if(status === STATUSES.LOADING)
